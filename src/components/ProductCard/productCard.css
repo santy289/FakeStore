@@ -1,0 +1,34 @@
+.ProductCard{
+    display: flex;
+    margin: 20px;
+    background-color: rgba(2, 2, 2, 0.377);
+    border-radius: 0.5rem;
+    text-align: center;
+  }
+.ProductCard_serviceTitle{
+    width: auto;
+  }
+.ProductCard_containerImageService{
+    display: block;
+    width: 140px;
+    height: 140px;
+    }
+.ProductCard--image{
+    border-radius: 0.5rem 0rem 0rem 0.5rem;
+    width: 100%;
+    height: 100%;
+      }
+  
+.ProductCard_infoServiceList{
+    padding: 0rem 1rem 0rem 1rem;
+    font-size: 2rem;
+    margin: auto;
+  }
+.card_tittle{
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 5px;
+}
+.card_info{
+  font-size: 1rem;
+}
