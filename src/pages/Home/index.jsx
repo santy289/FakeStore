@@ -1,31 +1,31 @@
 import Header from '../../components/Header';
 import ProductCard from '../../components/ProductCard';
-import { fetchProducts } from '../../services';
+import { getAllProducts } from '../../services';
 import { useEffect, useState} from 'react';
 import './home.css'
-
-
 
 function Home(){
     const [products, setProducts] = useState([]);
     const showProducts = async () => {
-        const data = await fetchProducts();
+        const data = await getAllProducts();
         setProducts(data);
     };
     useEffect(() => {
         showProducts();
     }, []);
     return (
-        <div>
-        <Header/>
-        <div>
-            {
-                products.map((product) => (
-                    <ProductCard key={product.id} eachProduct={product} />
-                ))
-            }
-        </div>  
-        </div>
+        <section className="main">
+            <header className="main_header">
+                 <Header/>
+            </header>
+            <div className="main_products">
+                {
+                    products.map((product) => (
+                        <ProductCard key={product.id} eachProduct={product} />
+                    ))
+                }
+            </div>  
+        </section>
     );
 }
 
