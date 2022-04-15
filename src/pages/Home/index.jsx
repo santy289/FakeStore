@@ -23,14 +23,15 @@ useEffect(() => {
         showProducts();
     }, []);
     return (
+        <div>
+        <header className="main_header">
+                 <Header/>
+            </header>
         <section className="main">
              {load ? (
         <Loading /> )
         :   (
         <div>
-            <header className="main_header">
-                 <Header/>
-            </header>
             <div className="main_products">
                 {
                     products.map((product) => (
@@ -42,6 +43,7 @@ useEffect(() => {
              )
             }
         </section>
+        </div>
     );
 }
 

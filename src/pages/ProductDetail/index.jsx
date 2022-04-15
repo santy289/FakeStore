@@ -24,13 +24,13 @@ function ProducDetails() {
   console.log(oneProducts);
 
   return (
+    <div>
+      <Header/>
     <div className="product-details">
       {load ? (
         <Loading /> 
       ) : 
-      (
-        <div>
-        <Header/>
+      ( 
         <div className="product-details__container">
         <div className="details-card">
           
@@ -55,8 +55,9 @@ function ProducDetails() {
           </p>
         </div>
       </div>
-      </div>
+     
       )}
+    </div>
     </div>
   )
 }

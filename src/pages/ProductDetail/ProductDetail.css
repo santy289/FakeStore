@@ -1,6 +1,5 @@
 .product-details {
     display: grid;
-    height: 90vh;
     place-content: center;
   }
   
