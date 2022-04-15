@@ -11,7 +11,7 @@ function ProducDetails() {
   useEffect(() => {
     setTimeout(() => {
       setLoad(false)
-    }, 1000)
+    }, 700)
   }, [])
   const {
     category,
