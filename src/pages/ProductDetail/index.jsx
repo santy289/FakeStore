@@ -29,8 +29,9 @@ function ProducDetails() {
         <Loading /> 
       ) : 
       (
-        <div className="product-details__container">
+        <div>
         <Header/>
+        <div className="product-details__container">
         <div className="details-card">
           
           <section className="card-top">
@@ -53,6 +54,7 @@ function ProducDetails() {
             <strong>Rate</strong>: {rate}
           </p>
         </div>
+      </div>
       </div>
       )}
     </div>
