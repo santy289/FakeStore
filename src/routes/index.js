@@ -16,7 +16,7 @@ function Mainrouter() {
             <Routes>
                 <Route path={RUTE_404} element={<Page404 />} />
                 <Route path={HOME_RUTE} element={<Home />} />
-                <Route path={PRODUCT_DETAIL_RUTE} element={<ProductDetail />} />
+                <Route path={`${PRODUCT_DETAIL_RUTE}/:id`} element={<ProductDetail />} />
                 <Route path={ABOUT_RUTE} element={<About />} />
             </Routes>
         </BrowserRouter>

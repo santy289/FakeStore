@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react"
-import { useSelector } from "react-redux"
-import Loading from "../../components/loading"
-import "./ProductDetails.css"
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import Loading from "../../components/Loading";
+import Header from "../../components/Header";
+import "./ProductDetail.css";
 
 function ProducDetails() {
   const [load, setLoad] = useState(true)
@@ -20,13 +21,18 @@ function ProducDetails() {
     rating: { rate, count },
     title,
   } = oneProducts
+  console.log(oneProducts);
 
   return (
     <div className="product-details">
       {load ? (
-        <Loading />
-      ) : (
+        <Loading /> 
+      ) : 
+      (
+        <div className="product-details__container">
+        <Header/>
         <div className="details-card">
+          
           <section className="card-top">
             <span className="card-top_title">{title}</span>
             <span>
@@ -47,6 +53,7 @@ function ProducDetails() {
             <strong>Rate</strong>: {rate}
           </p>
         </div>
+      </div>
       )}
     </div>
   )
