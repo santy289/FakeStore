@@ -30,6 +30,7 @@
     max-width: 500px;
     height: auto;
     margin-top: 20px;
+    border-radius: 80px;
 }
 .subtitle{
     font-size: 20px;
