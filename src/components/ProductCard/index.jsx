@@ -1,10 +1,10 @@
 import './productCard.css'
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { Link } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { fetchOneProduct } from "../../store/actions"
-import { PRODUCT_DETAIL_RUTE } from '../../routes/routes'
+import { PRODUCT_DETAIL_RUTE, RUTE_404 } from '../../routes/routes'
 
 function ProductCard(props) {
   const {
@@ -12,33 +12,45 @@ function ProductCard(props) {
   } = props.eachProduct;
   const dispatch = useDispatch()
   const [details, setDetails] = useState(true)
-  const [random, setRandom] = useState(Math.floor(Math.random() * (360 - 60 + 1))+60)
-  
-  
-  useEffect(() => {
-    setRandom(Math.floor(Math.random() * (360 - 60 + 1))+60);
-  }, [])
+  const [random, setRandom] = useState(Math.floor(Math.random() * (360 - 60 + 1))+60);
 
   const handleOnComplete = () => {
     setDetails(false)
     setRandom(0)
   }
+  
   const handleLinkCLick = async () => {
     dispatch(fetchOneProduct(id))
   }
  
+  const renderButton =({details}) => {
+    if (details === false){
+      return(   <Link 
+        to={`${RUTE_404}`}
+        onClick={handleLinkCLick}
+        ><button className="link_action--unactive">Go to details</button></Link>
+      )
+    }
+      else
+      return(
+        <Link 
+        to={`${PRODUCT_DETAIL_RUTE}/${id}`}
+        onClick={handleLinkCLick}
+        ><button className="link_action--active">Go to details</button></Link>
+      )
+    };
+
   const formatRemainingTime = time => {
     const minutes = Math.floor((time % 3600) / 60);
     const seconds = time % 60;
   
     return `${minutes}:${seconds}`;
   };
-  
   const renderTime = ({ remainingTime }) => {
     if (remainingTime === 0) {
       return <div className="timer">Too late</div>;
     }
-  
+    else
     return (
       <div className="timer">
         <div className="text">Remaining time</div>
@@ -46,12 +58,12 @@ function ProductCard(props) {
       </div>
     );
   };
-
   const timerProps = {
     isPlaying: true,
     size: 75,
     strokeWidth: 8
   };
+ 
     return (
       <div className="ProductCard">
         <div className="ProductCard_containerImageService">
@@ -63,7 +75,7 @@ function ProductCard(props) {
           </div>
         </div>
           <div className="ProductCard_infoServiceList--pricing">
-          <CountdownCircleTimer
+        <CountdownCircleTimer
           {...timerProps}
           isPlaying
           duration={random}
@@ -73,13 +85,8 @@ function ProductCard(props) {
         >
           {renderTime}
         </CountdownCircleTimer>
-            <Link
-             className={details ? "active" : "deactive"}
-             to={`${PRODUCT_DETAIL_RUTE}/${id}`}
-             onClick={handleLinkCLick}
-             ><button className="card_button">Go to details</button></Link>
-          </div>
-        
+        {renderButton({details})}
+          </div>        
       </div>
     );
   }

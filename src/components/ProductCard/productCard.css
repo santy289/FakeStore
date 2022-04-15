@@ -59,12 +59,24 @@
   gap: 50%;
   grid-template-columns: 100px (1fr, 1fr);
 }
-.card_button{
-  margin-top: 10px;
+.link_action--active{
+  margin-top: 20px;
   max-width: 100px;
   min-width: 100px;
   height: 40px;
   background-color: #00a8ff;
+  border-radius: 10px;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+.link_action--unactive{
+  margin-top: 20px;
+  max-width: 100px;
+  min-width: 100px;
+  height: 40px;
+  background-color: #000000;
   border-radius: 10px;
   color: white;
   font-size: 0.8rem;

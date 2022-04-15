@@ -13,7 +13,7 @@ function Header() {
         {/* <Sidebar /> */}
         <ul className="Header_nav">
           <NavLink to={HOME_RUTE} className="Header_nav--item">Home</NavLink>
-          <NavLink to={PRODUCT_DETAIL_RUTE} className="Header_nav--item">Comprar</NavLink>
+          <NavLink to={PRODUCT_DETAIL_RUTE} className="Header_nav--item">Detail</NavLink>
           <NavLink to={ABOUT_RUTE} className="Header_nav--item">About</NavLink>
         </ul>
       </header>
