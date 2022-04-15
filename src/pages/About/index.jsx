@@ -34,10 +34,11 @@ function About (){
                     react-countdown-circle-timer: to use a beautilized countdown timer
                 </li>
             </ul>
-            <label htmlFor="gmail">Email:</label>
-            <img src={Gmail} alt="Email" className="icon_image"/>
-            <p className="email_text" name="gmail">santiago.valencia4@udea.edu.co</p>
             <div className="links_container">
+            <label htmlFor="gmail"></label>
+            <a href='https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=santiago.valencia4@udea.edu.co'>
+            <img src={Gmail} alt="Email" className="icon_image"/>
+            </a>
             <label htmlFor="linkedin"/>
             <a href='https://www.linkedin.com/in/santiagovalenciaalvarez/'>
                 <img src={LinkedIn} alt="Linkedin" className="icon_image"/>
