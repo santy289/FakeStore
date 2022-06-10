@@ -8,7 +8,6 @@ import './home.css'
 function Home(){
 
 const [load, setLoad] = useState(true),
-      [lookingFor, setLookingFor] = useState(''),
       [products, setProducts] = useState([]),
       [showingProducts, setShowingProducts] = useState(products);
 
@@ -16,15 +15,15 @@ useEffect(() => {
     setTimeout(() => {
         setLoad(false)
     }, 700)
-    }, [lookingFor])
+    }, [])
     
     const showProducts = async () => {
         const data = await getAllProducts();
         setProducts(data)
+        setShowingProducts(data)
     };
     useEffect(() => {
         showProducts();
-        
     }, []);
 
      const filterProducts = (para) => {
@@ -43,8 +42,11 @@ useEffect(() => {
         :   (
         <div>
             <div className="search_bar">
-                <input type="text" placeholder="Search for a product" onChange={(text)=>setLookingFor(text)}
-                onFocus={()=>setShowingProducts(filterProducts(lookingFor))}/>
+                <input type="text" placeholder="Search for a product" onChange={({target})=>setShowingProducts(filterProducts(target.value))}
+                />
+                <button
+                title='X'
+                style={{width:20,height:20}}/>
             </div>
             <div className="main_products">
                 {
