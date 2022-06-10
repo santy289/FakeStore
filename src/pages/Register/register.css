@@ -1,0 +1,30 @@
+.Register-form__Container{
+    display:flex;
+    flex-direction: column;
+    align-items: center; 
+    margin-top: 50px;   
+}
+.home__register--label{
+    border-radius: 20px;
+    margin: 10px;
+    font-size: 2rem;
+    text-align: center;
+}
+.home__register--input{
+    width: 40%;
+    border-radius: 20px;
+    height: 50px;
+    text-align: center;
+    border-color: rgb(0, 140, 255);
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+.home__login--button{
+    margin-top: 10px;
+    height: 30px;
+    margin-bottom: 10px;
+    text-align: center;
+    width: 15%;
+    border-radius: 33px;
+    border-color: rgb(0, 140, 255)
+}

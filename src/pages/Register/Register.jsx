@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { setDoc, doc } from 'firebase/firestore';
 import { db } from '../../config/firebase';
+import Header from '../../components/Header'
+import './register.css';
 
 const auth = getAuth();
 
@@ -27,6 +29,8 @@ function Login () {
     }
   }
 return(
+    <div>
+        <Header />
     <div>
         <Formik
             initialValues={{ 
@@ -61,21 +65,24 @@ return(
         >
             {({ isSubmitting }) => (
                 <Form>
-                    <label htmlFor="nickname">Nickname</label>
-                    <Field type="text" name="nickname" placeholder="Nickname" />
+                    <div className="Register-form__Container">
+                    <label className="home__register--label" htmlFor="nickname">Nickname</label>
+                    <Field className="home__register--input" type="text" name="nickname" placeholder="Nickname" />
                     <ErrorMessage name="nickname" component="div" />
-                    <label htmlFor="email">Email</label>
-                    <Field type="email" name="email" placeholder="email" />
+                    <label className="home__register--label" htmlFor="email">Email</label>
+                    <Field className="home__register--input" type="email" name="email" placeholder="email" />
                     <ErrorMessage name="email" component="div" />
-                    <label htmlFor="password">Password</label>
-                    <Field type="password" name="password" placeholder="password" />
+                    <label className="home__register--label" htmlFor="password">Password</label>
+                    <Field className="home__register--input" type="password" name="password" placeholder="password" />
                     <ErrorMessage name="password" component="div" />
-                    <button type="submit" disabled={isSubmitting}>
+                    <button className="home__login--button" type="submit" disabled={isSubmitting}>
                         Submit
                     </button>
+                    </div>
                 </Form>
             )}
         </Formik>
+    </div>
     </div>
 )
 }

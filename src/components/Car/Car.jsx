@@ -5,10 +5,10 @@ import { useDispatch, useSelector} from 'react-redux';
 import { useEffect} from 'react';
 import { getinfo } from '../../store/actions';
 
-async function Car (oneProducts){
+async function AddProduct (oneProducts){
     const navigate = useNavigate();
     const dispatch = useDispatch;
-    let { car } = useSelector(state=>state.userInfo)
+    let [ car ] = useSelector(state=>state.userInfo)
     const id = localStorage.getItem('userId');
     const docRef = doc(db, 'users', id);
     car = car.push(oneProducts);
@@ -23,4 +23,4 @@ async function Car (oneProducts){
         dispatch(getinfo(id));
     },[])
 }
-export default Car;
+export default AddProduct;

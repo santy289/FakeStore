@@ -5,14 +5,14 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getinfo } from '../../store/actions'
-import logout from '../../assets/logout.svg';
+import Header from '../../components/Header'
+import './login.css';
 
 
 
 function Login (){
     const navigate = useNavigate();
     const id = localStorage.getItem('userId');
-    const userInfo = useSelector(state => state.userInfo);
     const dispatch = useDispatch;
     const [loginStatus, setLoginStatus] = useState(false);
 
@@ -45,7 +45,9 @@ function Login (){
         }, [])
 
     return (
-            <div>
+        <div>
+        <Header />
+            <div className="Login-Main__Containter">
         {loginStatus === false ?
                     <Formik 
                     initialValues={{ email: '', password: '' }}
@@ -66,7 +68,7 @@ function Login (){
                     {({ errors }) => (
                         <Form>
                         <div className="home__login--form">
-                        <h1 className="home__login--title">Welcome to Poke Battle</h1>
+                        <h1 className="home__login--title">Welcome to E-comerce Geekaton</h1>
                             <label className="home__login--label" htmlFor="email">Email</label>
                             <Field name="email" type="text" className="home__login--input" />
                             <ErrorMessage
@@ -89,6 +91,7 @@ function Login (){
                     : null
                     }
             </div>
+        </div>
         )
 }
 export default Login;

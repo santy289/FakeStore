@@ -9,11 +9,16 @@ function ProducDetails() {
   const [load, setLoad] = useState(true)
   const oneProducts = useSelector((state) => state.oneProduct)
 
+  async function handleAddProduct(){
+    await Car(oneProducts);
+  }
+
   useEffect(() => {
     setTimeout(() => {
       setLoad(false)
     }, 700)
   }, [])
+
   const {
     category,
     description,
@@ -54,7 +59,7 @@ function ProducDetails() {
             <strong>Rate</strong>: {rate}
           </p>
         </div>
-        <button onClick={()=>Car(oneProducts)}>
+        <button onClick={handleAddProduct}>
           Add to Car
         </button>
       </div>

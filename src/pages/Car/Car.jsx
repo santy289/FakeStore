@@ -1,8 +1,8 @@
-function Car() {
+function Profile() {
     return (
         <div>
             holi
         </div>
     )
 }
-export default Car;
+export default Profile;
