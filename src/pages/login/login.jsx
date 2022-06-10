@@ -2,14 +2,16 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from '../../config/firebase'
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getinfo } from '../../store/actions'
 import logout from '../../assets/logout.svg';
 
 
+
 function Login (){
-    const id = sessionStorage.getItem('userId');
+    const navigate = useNavigate();
+    const id = localStorage.getItem('userId');
     const userInfo = useSelector(state => state.userInfo);
     const dispatch = useDispatch;
     const [loginStatus, setLoginStatus] = useState(false);
@@ -18,12 +20,14 @@ function Login (){
         try {
             const userCredential = await signInWithEmailAndPassword(auth, values.email, values.password);
             setLoginStatus(true);
-            sessionStorage.setItem('userId', userCredential.user.uid);
+            localStorage.setItem('userId', userCredential.user.uid);
             dispatch(getinfo(userCredential.user.uid));
+            navigate('/');
         } catch (error) {
           const errorCode = error.code;
           const errorMessage = error.message;
-          alert(errorCode, errorMessage);
+          console.log(errorCode, errorMessage);
+          navigate('/');
         }
       };
       async function handleLogout() {
@@ -36,6 +40,7 @@ function Login (){
             setLoginStatus(false);
         }else if (id){
             setLoginStatus(true);
+            navigate('/');
         }
         }, [])
 
@@ -81,15 +86,7 @@ function Login (){
                         </Form>
                     )}
                 </Formik>
-                    : userInfo.avatar && loginStatus === true? 
-                    <div className="home__loged--container">
-                    <p className="home__loged--text">Welcome back  </p>
-                    <h1 className="home__loged--name">{userInfo.userName}</h1>
-                    <img className="home__loged--image" src={userInfo.avatar} alt="avatar" />
-                    <img onClick={handleLogout} className="home__logout--button" src={logout} alt="Log" />
-                    </div>
-                    :
-                    <p className="home__loading">Loading...</p>
+                    : null
                     }
             </div>
         )

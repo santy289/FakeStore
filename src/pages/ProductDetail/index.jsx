@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Loading from "../../components/Loading";
 import Header from "../../components/Header";
+import Car from '../../components/Car/Car'
 import "./ProductDetail.css";
 
 function ProducDetails() {
@@ -21,7 +22,6 @@ function ProducDetails() {
     rating: { rate, count },
     title,
   } = oneProducts
-  console.log(oneProducts);
 
   return (
     <div>
@@ -54,8 +54,11 @@ function ProducDetails() {
             <strong>Rate</strong>: {rate}
           </p>
         </div>
+        <button onClick={()=>Car(oneProducts)}>
+          Add to Car
+        </button>
       </div>
-     
+
       )}
     </div>
     </div>
