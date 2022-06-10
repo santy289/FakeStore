@@ -45,8 +45,10 @@ useEffect(() => {
                 <input type="text" placeholder="Search for a product" onChange={({target})=>setShowingProducts(filterProducts(target.value))}
                 />
                 <button
-                title='X'
-                style={{width:20,height:20}}/>
+                style={{width:20,height:20, backgroundColor:'tomato', border:'none'}}
+                onClick={()=>setShowingProducts(products)}>
+                    <p style={{color:'#fff'}}>X</p>
+                </button>
             </div>
             <div className="main_products">
                 {
