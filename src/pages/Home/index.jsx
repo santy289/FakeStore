@@ -7,21 +7,31 @@ import './home.css'
 
 function Home(){
 
-const [load, setLoad] = useState(true)
+const [load, setLoad] = useState(true),
+      [lookingFor, setLookingFor] = useState(''),
+      [products, setProducts] = useState([]),
+      [showingProducts, setShowingProducts] = useState(products);
 
 useEffect(() => {
     setTimeout(() => {
         setLoad(false)
     }, 700)
-    }, [])
-    const [products, setProducts] = useState([]);
+    }, [lookingFor])
+    
     const showProducts = async () => {
         const data = await getAllProducts();
-        setProducts(data);
+        setProducts(data)
     };
     useEffect(() => {
         showProducts();
+        
     }, []);
+
+     const filterProducts = (para) => {
+        return products.filter(ele => {
+            return ele.title.toLowerCase().indexOf(para.toLowerCase()) > -1;
+        })
+    }
     return (
         <div>
         <header className="main_header">
@@ -32,9 +42,13 @@ useEffect(() => {
         <Loading /> )
         :   (
         <div>
+            <div className="search_bar">
+                <input type="text" placeholder="Search for a product" onChange={(text)=>setLookingFor(text)}
+                onFocus={()=>setShowingProducts(filterProducts(lookingFor))}/>
+            </div>
             <div className="main_products">
                 {
-                    products.map((product) => (
+                    showingProducts.map((product) => (
                         <ProductCard key={product.id} eachProduct={product} />
                     ))
                 }
