@@ -1,7 +1,13 @@
-import { GET_PRODUCT, GET_SINGLE_PRODUCT } from "./types"
+import { GET_PRODUCT, GET_SINGLE_PRODUCT, USER_INFO } from "./types"
 
 const initialState = {
   products: [],
+  userInfo: {
+    avatar: '',
+    email: '',
+    car: [],
+    username: '',
+},
   oneProduct: {
     id: 0,
     title: "...",
@@ -19,6 +25,11 @@ const initialState = {
 // eslint-disable-next-line default-param-last
 export default function reducer(state = initialState, action) {
   switch (action.type) {
+    case USER_INFO:
+            return {
+                ...state,
+                userInfo: action.payload,
+            };
     case GET_PRODUCT:
       return {
         ...state,
