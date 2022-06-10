@@ -47,7 +47,7 @@ useEffect(() => {
                 <button
                 style={{width:20,height:20, backgroundColor:'tomato', border:'none'}}
                 onClick={()=>setShowingProducts(products)}>
-                    <p style={{color:'#fff'}}>X</p>
+                    <p style={{color:'#fff', fontWeight:'900'}}>X</p>
                 </button>
             </div>
             <div className="main_products">
