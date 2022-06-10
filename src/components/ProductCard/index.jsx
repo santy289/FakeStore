@@ -18,6 +18,7 @@ function ProductCard(props) {
     setDetails(false)
     setRandom(0)
   }
+ 
   
   const handleLinkCLick = async () => {
     dispatch(fetchOneProduct(id))
@@ -68,25 +69,22 @@ function ProductCard(props) {
       <div className="ProductCard">
         <div className="ProductCard_containerImageService">
           <img className="ProductCard_containerImageService--image" src={image} alt={title} />
-        </div>
-        <div className="ProductCard_infoServiceList">
-          <div className="ProductCard_serviceTitle">
-            <h2 className="card_tittle">{title}</h2>
-          </div>
-        </div>
+          <h2 className="card_tittle">{title}</h2>
+         </div>
+          <hr/>
           <div className="ProductCard_infoServiceList--pricing">
-        <CountdownCircleTimer
-          {...timerProps}
-          isPlaying
-          duration={random}
-          colors={['#06f436', '#a5f406','#f0f406','#F7B801','#f46906','#A30000','#000000']}
-          colorsTime={[150, 120, 90, 60, 30, 15, 0]}
-          onComplete={handleOnComplete}
-        >
-          {renderTime}
-        </CountdownCircleTimer>
-        {renderButton({details})}
-          </div>        
+          <CountdownCircleTimer
+            {...timerProps}
+            isPlaying
+            duration={random}
+            colors={['#06f436', '#a5f406','#f0f406','#F7B801','#f46906','#A30000','#000000']}
+            colorsTime={[150, 120, 90, 60, 30, 15, 0]}
+            onComplete={handleOnComplete}
+          >
+            {renderTime}
+          </CountdownCircleTimer>
+          {renderButton({details})}
+        </div>        
       </div>
     );
   }
